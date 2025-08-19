@@ -1,9 +1,14 @@
 import ProductCard from "@/app/Components/ProductCard/CardPage";
 import { ProductServices } from "@/app/services/products-services";
 
-export default async function CategoryPage(props: { params: { category: string } }) {
-  const { category } = props.params;
-  const categoryName = decodeURIComponent(category);
+interface CategoryPageProp {
+  params: {
+    category: string;
+  };
+}
+
+export default async function CategoryPage({ params }: CategoryPageProp) {
+  const categoryName = decodeURIComponent(params.category);
 
   const data = await ProductServices.getProductByCategory(categoryName);
 
