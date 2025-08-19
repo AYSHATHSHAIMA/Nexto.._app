@@ -1,32 +1,43 @@
-import React from 'react';
-import Link from 'next/link';
+import React from "react";
+import Link from "next/link";
 
-export default function Layout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div>
-      {/* Navigation bar */}
-      <nav className="w-full m-0 p-0  top-0 bg-blue-50  shadow z-10">
+      <nav className="w-full m-0 p-0 top-0 bg-blue-50 shadow z-10">
         <ul className="flex gap-6 justify-center text-blue-900 font-medium">
+        
           <li>
-            <Link href="/" className='nav-link'>Men's Clothing</Link>
+            <Link href="/category/beauty" className="nav-link">
+              Beauty
+            </Link>
+          </li>
+
+          <li>
+            <Link href="/category/fragrances" className="nav-link">
+              fragrances
+            </Link>
           </li>
           <li>
-            <Link href="/about" className='nav-link'>Women's Clothing</Link>
+            <Link href="/category/Groceries" className="nav-link">
+              Groceries
+            </Link>
+          </li>
+
+          <li>
+            <Link href="/category/furniture" className="nav-link">
+              Home Decorations
+            </Link>
           </li>
           <li>
-            <Link href="/products" className='nav-link'>Electronics</Link>
+            <Link href="/category/Electronics" className="nav-link">
+              Electronics{" "}
+            </Link>
           </li>
         </ul>
       </nav>
 
-      {/* Main page content below navbar */}
       <main className="pt-1 ">{children}</main>
-                {/* <p className="text-center  min-h-screen flex flex-col bg-primary m-0 p-0"> @_my_next_app..</p> */}
-
     </div>
   );
 }

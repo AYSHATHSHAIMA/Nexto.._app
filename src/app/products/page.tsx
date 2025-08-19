@@ -1,35 +1,25 @@
-import React from 'react'
-import ProductCard from '../Components/ProductCard/CardPage';
-import { ProductServices } from '../services/products-services';
-import Link from 'next/link';
-import Productlist from '../Components/Productlist';
+import Image from "next/image";
+import { ProductServices } from "../services/products-services";
+import ProductCard from "../Components/ProductCard/CardPage";
+import { Suspense } from "react";
+import Loading from "../Components/Loading/Loading";
 
- async function getProducts() {
-    const ProductResponse = await ProductServices.getProducts();
-    return ProductResponse;
- }
-  export default async function Productpage() {
-     const product= await getProducts()
-  
-  return (<>
-  
-   <h2  className='text-center text-warning  text-shadow-lg '>Product-List</h2>
-  
+export default async function Home() {
+  const products = await ProductServices.getProducts();
+  console.log("Fetched items:", products);
 
-  <Productlist></Productlist>
+  return (
+    <main className="flex flex-wrap justify-center items-start gap-4 p-1">
+        <Suspense fallback={<Loading/>}>
+            {products.products.map((p: any) => (
+           
+                   <ProductCard key={p.id} product={p}     />
+                 ))}
+        </Suspense>
+            
+           
     
-
-
-
-   
-      {/* Recommending products
-       <h2 id='Recommended '>Recommented Product</h2>
-        <div className='container flex flex-wrap h-screen'>
-       {product.map((p:any)=>
-    (
-    <ProductCard  key={p.id} product={p} ></ProductCard>
-
-  ))}</div> */}
-  </>);
-
-  }
+          
+          </main>
+  );
+}

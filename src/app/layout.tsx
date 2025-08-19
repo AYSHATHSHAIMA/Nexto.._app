@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 import Navigation from "./Components/nav/Navigation";
+import Providers from "@/redux/provider";
+import OfferCarousel from "./Components/Carousel/Carousel";
+import FooterPage from "./Components/Footer/FooterPage";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,16 +30,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
         <div className="container-fluid">
           <Navigation></Navigation>
-          {/* <h1 className="text-center">My Next_app</h1> */}
-          {children}
-          <p className="text-center   bg-primary m-0 p-0"> @_my_next_app..</p>
+          <OfferCarousel></OfferCarousel>
+
+          <Providers> {children} </Providers>
+          <FooterPage></FooterPage>
         </div>
       </body>
-
-
     </html>
   );
 }
