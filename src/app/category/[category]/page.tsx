@@ -1,13 +1,13 @@
 import ProductCard from "@/app/Components/ProductCard/CardPage";
 import { ProductServices } from "@/app/services/products-services";
 
-interface CategoryPageProp {
+type PageProp = {
   params: {
     category: string;
   };
 }
 
-export default async function CategoryPage({ params }: CategoryPageProp) {
+export default async function CategoryPage({ params }: PageProp) {
   const categoryName = decodeURIComponent(params.category);
 
   const data = await ProductServices.getProductByCategory(categoryName);
