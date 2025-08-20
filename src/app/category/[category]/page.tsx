@@ -2,13 +2,14 @@ import ProductCard from "@/app/Components/ProductCard/CardPage";
 import { ProductServices } from "@/app/services/products-services";
 
 type CategoryPageProps = {
-  params: {
+  params: Promise<{
     category: string;
-  };
+  }>;
 };
 
 export default async function CategoryPage({ params }: CategoryPageProps) {
-  const categoryName = decodeURIComponent(params.category);
+  const {category}= await params;
+  const categoryName =decodeURIComponent(category);
 
   const data = await ProductServices.getProductByCategory(categoryName);
   const products = data?.products ?? [];

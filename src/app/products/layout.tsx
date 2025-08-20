@@ -33,7 +33,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     
 
       <div
-        className={`fixed top-0 left-0 h-full w-64 bg-white shadow-lg scroll-auto transform transition-transform duration-300 z-50
+        className={`fixed top-0 left-0 h-full w-64 bg-white shadow-lg overflow-auto transform transition-transform duration-300 z-50
           ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
       >
         <div className="flex justify-between items-center px-4 py-3 border-b ">
@@ -46,12 +46,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           </button>
         </div>
 
-        <ul className="flex flex-col gap-4 p-4 text-black font-medium ">
+        <ul className="flex flex-col gap-4 p-4 font-medium ">
           {categories.map((cat) => (
             <li key={cat.path}>
               <Link
                 href={cat.path}
-                className="block hover:bg-blue-100 px-3 py-2 rounded"
+                className="block  text-black no-underline hover:bg-blue-100 px-3 py-2 rounded"
                 onClick={() => setIsOpen(false)} 
               >
                 {cat.name}
@@ -63,7 +63,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
     
 
-      {/* Main content */}
       <main className="pt-4">{children}</main>
     </div>
   );

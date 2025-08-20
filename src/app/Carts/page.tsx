@@ -62,7 +62,7 @@ export default function CartsPage() {
           onClick={() => dispatch(checkOut())}
         >
           Check-out
-        </button>{" "}
+        </button>
       </div>
     </div>
   );
